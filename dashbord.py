@@ -14,7 +14,10 @@ def load_data(url) :
 def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
     count_review_city = df_Review_1['customer_city'].value_counts().reset_index()
     count_review_city.columns = ['Seller_City','Jumlah']
+    
     Lima_Terendah = count_review_city.head()
+
+    st.header("Grafik Ketepatan Jasa Pengiriman")
 
 
 df_customer = load_data("https://raw.githubusercontent.com/nianaa24/IF-MATH/main/customers_dataset.csv")
@@ -27,7 +30,11 @@ with st.sidebar :
     
 if (selected == 'Dashboard') :
     st.header(f"Dashboard Analisis E-Commerce")
-    tab1 = st.tabs(["Analisis Pelanggan"])
-
+    tab1,tab2 = st.tabs(["Analisis Pengiriman", "Analisis Review"])
+    
     with tab1 :
-        Analisis_Pelanggan_Unik_Per_Kota(df_customer)
+        Analisis_Pengiriman(df_orders)
+    with tab2 :
+        Analisis_Review(df_Order_Items,df_Order_Reviews,df_sellers)
+
+
