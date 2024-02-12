@@ -33,26 +33,14 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
         'Jumlah': [count_sp,count_rdj,count_bh,count_b,count_cu,count_ca,count_pa,count_s,count_g,count_sbdc]
     })
 
-    st.Dataframe(data_kota_member_terbanyak)
-    st.header("Persentase Pelanggan ID Unik di 10 Kota")
+    df = pd.DataFrame(data_kota_member_terbanyak)
 
-
-
-    #Grafik Keterlambatan
-    label = data_kota_member_terbanyak['Kategori'] 
-    size = data_kota_member_terbanyak['Jumlah']
-
-    fig, ax = plt.subplots()
-    ax.pie(size, labels=label, autopct='%1.1f%%', startangle=90)
-    ax.axis('equal')  # Mengatur aspek rasio agar lingkaran tampak sempurna
-
-    st.pyplot(fig)
+    # Buat pie chart dengan Plotly Express
+    fig = px.pie(df, values='Jumlah', names='Kategori', title='Persentasi Member di 10 Kota')
     
-    Lima_Terendah = count_review_city.head(10)
-
+    # Tampilkan pie chart menggunakan Streamlit
+    st.plotly_chart(fig)
     
-
-
     #Expander Grafik
     with st.expander("Penjelasan Cabang Terendah") :
         st.write('Analisis selanjutnya untuk menambah wawasan pengguna')
