@@ -12,7 +12,7 @@ def load_data(url) :
     return df
 
 def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
-    count_review_city = df_Review_1['customer_city'].value_counts().reset_index()
+    count_review_city = df_customer['customer_city'].value_counts().reset_index()
     count_review_city.columns = ['Seller_City','Jumlah']
     
     Lima_Terendah = count_review_city.head()
