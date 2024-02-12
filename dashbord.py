@@ -12,6 +12,9 @@ def load_data(url) :
     return df
 
 def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
+    count_reviews = df_customer[df_customer['customer_city']=='sau paolo']
+    count_reviews.columns = ['Review_Score','Jumlah']
+    
 
     #Perhitungan value_count() untuk status 'processing','shipped','delivered'
     count_sp = df_customer['customer_city'].value_counts()['sau paolo']
@@ -30,7 +33,10 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
         'Jumlah': [count_sp,count_rdj,count_bh,count_b,count_cu,count_ca,count_pa,count_s,count_g,count_sbdc]
     })
 
-    st.dataframe(data_kota_member_terbanyak)
+    st.Dataframe(data_kota_member_terbanyak)
+    st.header("Persentase Pelanggan ID Unik di 10 Kota")
+
+
 
     #Grafik Keterlambatan
     label = data_kota_member_terbanyak['Kategori'] 
@@ -44,19 +50,8 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
     
     Lima_Terendah = count_review_city.head(10)
 
-    st.header("Persentase Pelanggan ID Unik di 10 Kota")
-    st.dataframe(Lima_Terendah)
+    
 
-
-    # Buat bar chart
-    label = Lima_Terendah['Seller_City']
-    data = Lima_Terendah['Jumlah']
-
-    fig, ax = plt.subplots()
-    ax.pie(Lima_Terendah, label=Lima_Terendah.index, autopct='%1.1f%%', startangle=140)
-    ax.axis('equal')  # Mengatur aspek rasio agar lingkaran tampak sempurna
-
-    st.pyplot(fig)
 
     #Expander Grafik
     with st.expander("Penjelasan Cabang Terendah") :
