@@ -39,7 +39,7 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
 
     #Expander Grafik
     with st.expander("Penjelasan Cabang Terendah") :
-        st.write('Analisis selanjutnya untuk menambah wawasan pengguna
+        st.write('Analisis selanjutnya untuk menambah wawasan pengguna')
 
 
 df_customer = load_data("https://raw.githubusercontent.com/nianaa24/IF-MATH/main/customers_dataset.csv")
