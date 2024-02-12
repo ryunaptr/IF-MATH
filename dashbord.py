@@ -14,8 +14,7 @@ def load_data(url) :
 def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
      kota_list = ['sau paolo', 'rio de janeiro', 'belo horizonte', 'brasilia', 'curitiba', 'campinas', 'porto alegre', 'salvador', 'guarulhos', 'sao bernardo do campo']
     
-    count_review_city = df_customer[df_customer['customer_city'].isin(kota_list)].value_counts().reset_index()
-    count_review_city.columns = ['Seller_City','Jumlah']
+    count_review_city = df_customer[df_customer['customer_city'].isin(kota_list)].value_counts()
     
     Lima_Terendah = count_review_city.head(10)
 
