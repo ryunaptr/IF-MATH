@@ -22,7 +22,7 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
     count_pa = df_customer['customer_city'].value_counts()['porto alegre']
     count_s = df_customer['customer_city'].value_counts()['salvador']
     count_g = df_customer['customer_city'].value_counts()['guarulhos']
-    count_sbdc = df_customer['customer_citys'].value_counts()['sao bernardo do campo']
+    count_sbdc = df_customer['customer_city'].value_counts()['sao bernardo do campo']
 
     data_kota_member_terbanyak = pd.DataFrame({
         'Kategori': ['sau paolo', 'rio de janeiro', 'belo horizonte', 'brasilia', 'curitiba', 'campinas', 'porto alegre', 'salvador', 'guarulhos', 'sao bernardo do campo'],
