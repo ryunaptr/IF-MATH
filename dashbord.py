@@ -12,10 +12,6 @@ def load_data(url) :
     return df
 
 def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
-    count_reviews = df_customer[df_customer['customer_city']=='sau paolo']
-    count_reviews.columns = ['Review_Score','Jumlah']
-    
-
     #Perhitungan value_count() untuk status 'processing','shipped','delivered'
     count_sp = df_customer['customer_city'].value_counts()['sau paolo']
     count_rdj = df_customer['customer_city'].value_counts()['rio de janeiro']
