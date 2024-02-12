@@ -17,7 +17,7 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
     
     Lima_Terendah = count_review_city.head(10)
 
-    st.header("Grafik 5 Cabang Terendah")
+    st.header("Persentase Pelanggan ID Unik per Kota")
     st.dataframe(Lima_Terendah)
 
     # Buat bar chart
@@ -25,16 +25,9 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
     data = Lima_Terendah['Jumlah']
 
     fig, ax = plt.subplots()
-    ax.bar(label, data, color=['skyblue' if jumlah <= 999 else 'red' for jumlah in data])
-    ax.set_xlabel('Seller_City')
-    ax.set_ylabel('Jumlah')
+    ax.pie(size, labels=label, autopct='%1.1f%%', startangle=90)
+    ax.axis('equal')  # Mengatur aspek rasio agar lingkaran tampak sempurna
 
-    #Menambahkan Label Pada Setiap Bar
-    for i in range (len(label)) :
-        ax.text(label[i], data[i], str(data[i]), ha='center', va='bottom' )
-
-    #Rotasi Label 45 derajat
-    plt.xticks(rotation=45)                    
     st.pyplot(fig)
 
     #Expander Grafik
