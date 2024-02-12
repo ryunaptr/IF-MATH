@@ -43,39 +43,18 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
 
     st.write('<hr>', unsafe_allow_html=True) #hr Garis Pemisah
     
-    #Perhitungan value_count() untuk status 'processing','shipped','delivered'
-    count_sp = df_customer['customer_city'].value_counts()['sau paolo']
-    count_rdj = df_customer['customer_city'].value_counts()['rio de janeiro']
-    count_bh = df_customer['customer_city'].value_counts()['belo horizonte']
-    count_b = df_customer['customer_city'].value_counts()['brasilia']
-    count_cu = df_customer['customer_city'].value_counts()['curitiba']
-    count_ca = df_customer['customer_city'].value_counts()['campinas']
-    count_pa = df_customer['customer_city'].value_counts()['porto alegre']
-    count_s = df_customer['customer_city'].value_counts()['salvador']
-    count_g = df_customer['customer_city'].value_counts()['guarulhos']
-    count_sbdc = df_customer['customer_city'].value_counts()['sao bernardo do campo']
+    # Ambil 5 kota teratas berdasarkan kolom yang sesuai
+    top_cities = df_customer['customer_city'].value_counts().head(5)
+    top_cities.columns = ['Seller_City','Jumlah']
 
-    data_kota_member_terbanyak = pd.DataFrame({
-        'Kategori': ['sau paolo', 'rio de janeiro', 'belo horizonte', 'brasilia', 'curitiba', 'campinas', 'porto alegre', 'salvador', 'guarulhos', 'sao bernardo do campo'],
-        'Jumlah': [count_sp,count_rdj,count_bh,count_b,count_cu,count_ca,count_pa,count_s,count_g,count_sbdc]
-    })
-
-    #Perkembangan Pengiriman
-    st.header("Grafik 5 Kota dengan Member Terbanyak")
-    st.dataframe(data_kota_member_terbanyak)
-
-    # Buat bar chart
-    label = data_pengiriman['Kategori']
-    data = data_pengiriman['Jumlah']
-
-
-    df = pd.DataFrame(data_kota_member_terbanyak)
-
-    # Buat pie chart dengan Plotly Express
-    fig = px.pie(df, values='Jumlah', names='Kategori', title='Persentasi Member di 10 Kota')
+    # Buat pie chart
+    fig, ax = plt.subplots()
+    ax.pie(top_cities, labels=top_cities.index, autopct='%1.1f%%', startangle=90)
+    ax.axis('equal')  # Pastikan pie chart terlihat seperti lingkaran
     
-    # Tampilkan pie chart menggunakan Streamlit
-    st.plotly_chart(fig)
+    # Tampilkan pie chart di Streamlit
+    st.pyplot(fig)
+
     
     #Expander Grafik
     with st.expander("Penjelasan Cabang Terendah") :
