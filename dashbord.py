@@ -33,8 +33,7 @@ if (selected == 'Dashboard') :
     tab1,tab2 = st.tabs(["Analisis Pengiriman", "Analisis Review"])
     
     with tab1 :
-        Analisis_Pengiriman(df_orders)
-    with tab2 :
-        Analisis_Review(df_Order_Items,df_Order_Reviews,df_sellers)
+        Analisis_Pelanggan_Unik_Per_Kota(df_customer)
+    
 
 
