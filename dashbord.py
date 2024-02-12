@@ -16,11 +16,6 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
     count_review_city.columns = ['Seller_City','Jumlah']
     Lima_Terendah = count_review_city.head()
 
-    #Analisis Data Review Penilaian
-    st.header("Grafik Review Terhadap Order Konsumen")
-    count_reviews_sorted = count_reviews.sort_values(by='Review_Score')
-        
-    st.dataframe(count_reviews_sorted)
 
 df_customer = load_data("https://raw.githubusercontent.com/nianaa24/IF-MATH/main/customers_dataset.csv")
 
