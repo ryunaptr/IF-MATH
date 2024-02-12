@@ -12,13 +12,39 @@ def load_data(url) :
     return df
 
 def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
-     kota_list = ['sau paolo', 'rio de janeiro', 'belo horizonte', 'brasilia', 'curitiba', 'campinas', 'porto alegre', 'salvador', 'guarulhos', 'sao bernardo do campo']
-    
-    count_review_city = df_customer[df_customer['customer_city'].isin(kota_list)].value_counts()
+
+    #Perhitungan value_count() untuk status 'processing','shipped','delivered'
+    count_sp = df_customer['customer_city'].value_counts()['sau paolo']
+    count_rdj = df_customer['customer_city'].value_counts()['rio de janeiro']
+    count_bh = df_customer['customer_city'].value_counts()['belo horizonte']
+    count_b = df_customer['customer_city'].value_counts()['brasilia']
+    count_cu = df_customer['customer_city'].value_counts()['curitiba']
+    count_ca = df_customer['customer_city'].value_counts()['campinas']
+    count_pa = df_customer['customer_city'].value_counts()['porto alegre']
+    count_s = df_customer['customer_city'].value_counts()['salvador']
+    count_g = df_customer['customer_city'].value_counts()['guarulhos']
+    count_sbdc = df_customer['customer_citys'].value_counts()['sao bernardo do campo']
+
+    data_kota_member_terbanyak = pd.DataFrame({
+        'Kategori': ['sau paolo', 'rio de janeiro', 'belo horizonte', 'brasilia', 'curitiba', 'campinas', 'porto alegre', 'salvador', 'guarulhos', 'sao bernardo do campo'],
+        'Jumlah': [count_sp,count_rdj,count_bh,count_b,count_cu,count_ca,count_pa,count_s,count_g,count_sbdc]
+    })
+
+     st.dataframe(data_kota_member_terbanyak)
+
+    #Grafik Keterlambatan
+    label = data_kota_member_terbanyak['Kategori'] 
+    size = data_kota_member_terbanyak['Jumlah']
+
+    fig, ax = plt.subplots()
+    ax.pie(size, labels=label, autopct='%1.1f%%', startangle=90)
+    ax.axis('equal')  # Mengatur aspek rasio agar lingkaran tampak sempurna
+
+    st.pyplot(fig)
     
     Lima_Terendah = count_review_city.head(10)
 
-    st.header("Persentase Pelanggan ID Unik per Kota")
+    st.header("Persentase Pelanggan ID Unik di 10 Kota")
     st.dataframe(Lima_Terendah)
 
 
