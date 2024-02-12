@@ -60,6 +60,15 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
         'Jumlah': [count_sp,count_rdj,count_bh,count_b,count_cu,count_ca,count_pa,count_s,count_g,count_sbdc]
     })
 
+    #Perkembangan Pengiriman
+    st.header("Grafik 5 Kota dengan Member Terbanyak")
+    st.dataframe(data_kota_member_terbanyak)
+
+    # Buat bar chart
+    label = data_pengiriman['Kategori']
+    data = data_pengiriman['Jumlah']
+
+
     df = pd.DataFrame(data_kota_member_terbanyak)
 
     # Buat pie chart dengan Plotly Express
