@@ -25,7 +25,7 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
     data = Lima_Terendah['Jumlah']
 
     fig, ax = plt.subplots()
-    ax.bar(label, data, color=['purple' if jumlah <= 999 else 'red' for jumlah in data])
+    ax.bar(label, data, color=['purple' if jumlah <= 10000 else 'red' for jumlah in data])
     ax.set_xlabel('Seller_City')
     ax.set_ylabel('Jumlah')
 
