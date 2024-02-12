@@ -17,7 +17,7 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
 
 
 
-df_customer = load_data("https://github.com/nianaa24/IF-MATH/blob/main/customers_dataset.csv")
+#df_customer = load_data("https://github.com/nianaa24/IF-MATH/blob/main/customers_dataset.csv")
 
 with st.sidebar :
     selected = option_menu('Menu',['Dashboard'],
