@@ -17,7 +17,7 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
     
     Lima_Terendah = count_review_city.head()
 
-    t.header("Grafik 5 Cabang Terendah")
+    st.header("Grafik 5 Cabang Terendah")
     st.dataframe(Lima_Terendah)
 
     # Buat bar chart
