@@ -44,10 +44,10 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
     st.write('<hr>', unsafe_allow_html=True) #hr Garis Pemisah
     
     # Ambil 10 kota teratas berdasarkan kolom yang sesuai
-    top_cities = df_customer['customer_city'].value_counts().head(10)
+    top_cities = df_customer['customer_city'].value_counts().head(5)
     top_cities.columns = ['Seller_City','Jumlah']
 
-    Kota_Teratas = top_cities.head(10)
+    Kota_Teratas = top_cities.head(5)
 
     st.header("Diagram Banyaknya Member di 10 Kota")
     st.dataframe( Kota_Teratas)
