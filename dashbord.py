@@ -12,6 +12,7 @@ def load_data(url) :
     return df
 
 def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
+    ()
 
 
 
