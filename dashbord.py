@@ -30,7 +30,7 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
         'Jumlah': [count_sp,count_rdj,count_bh,count_b,count_cu,count_ca,count_pa,count_s,count_g,count_sbdc]
     })
 
-     st.dataframe(data_kota_member_terbanyak)
+    st.dataframe(data_kota_member_terbanyak)
 
     #Grafik Keterlambatan
     label = data_kota_member_terbanyak['Kategori'] 
