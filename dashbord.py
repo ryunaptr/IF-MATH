@@ -25,7 +25,7 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
     data = Lima_Terendah['Jumlah']
 
     fig, ax = plt.subplots()
-    ax.pie(size, labels=label, autopct='%1.1f%%', startangle=90)
+    ax.pie(count_review_city, labels=count_review_city.index, autopct='%1.1f%%', startangle=140)
     ax.axis('equal')  # Mengatur aspek rasio agar lingkaran tampak sempurna
 
     st.pyplot(fig)
