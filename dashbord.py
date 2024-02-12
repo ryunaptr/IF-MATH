@@ -15,7 +15,7 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
     count_review_city = df_customer['customer_city'].value_counts().reset_index()
     count_review_city.columns = ['Seller_City','Jumlah']
     
-    Lima_Terendah = count_review_city.head()
+    Lima_Terendah = count_review_city.head(10)
 
     st.header("Grafik 5 Cabang Terendah")
     st.dataframe(Lima_Terendah)
