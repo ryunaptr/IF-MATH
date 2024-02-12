@@ -12,6 +12,37 @@ def load_data(url) :
     return df
 
 def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
+    count_review_city = df_customer['customer_state'].value_counts().reset_index()
+    count_review_city.columns = ['Seller_City','Jumlah']
+
+    Lima_Terendah = count_review_city.head(10)
+    
+    st.header("Grafik 10 Negara dengan Customer Terbanyak")
+    st.dataframe(Lima_Terendah)
+
+    # Buat bar chart
+    label = Lima_Terendah['Seller_City']
+    data = Lima_Terendah['Jumlah']
+
+    fig, ax = plt.subplots()
+    ax.bar(label, data, color=['purple' if jumlah <= 999 else 'tosca' for jumlah in data])
+    ax.set_xlabel('Seller_City')
+    ax.set_ylabel('Jumlah')
+
+    #Menambahkan Label Pada Setiap Bar
+    for i in range (len(label)) :
+        ax.text(label[i], data[i], str(data[i]), ha='center', va='bottom' )
+
+    #Rotasi Label 45 derajat
+    plt.xticks(rotation=45)                    
+    st.pyplot(fig)
+
+    #Expander Grafik
+    with st.expander("Penjelasan Cabang Terendah") :
+        st.write('Analisis selanjutnya untuk menambah wawasan pengguna, terlihat terdapat 2 cabang yang memiliki penilaian 1 terbanyak, diantaranya Sao Paulo sebanyak 3.571 dan ibitinga sebangayk 1.241. dari sini perusahaan dapat mengambil keputusan apakah barang dari cabang tersebut perlu di cek kembali kualitasnya atau menutup pengiriman dari cabang tersebut')
+
+    st.write('<hr>', unsafe_allow_html=True) #hr Garis Pemisah
+    
     #Perhitungan value_count() untuk status 'processing','shipped','delivered'
     count_sp = df_customer['customer_city'].value_counts()['sau paolo']
     count_rdj = df_customer['customer_city'].value_counts()['rio de janeiro']
