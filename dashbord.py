@@ -15,14 +15,14 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
     count_review_city = df_customer['customer_state'].value_counts().reset_index()
     count_review_city.columns = ['Seller_City','Jumlah']
 
-    Lima_Terendah = count_review_city.head(10)
+    Negara_Teratas = count_review_city.head(10)
     
     st.header("Grafik 10 Negara dengan Customer Terbanyak")
-    st.dataframe(Lima_Terendah)
+    st.dataframe(Negara_Teratas)
 
     # Buat bar chart
-    label = Lima_Terendah['Seller_City']
-    data = Lima_Terendah['Jumlah']
+    label = Negara_Teratas['Seller_City']
+    data = Negara_Teratas['Jumlah']
 
     fig, ax = plt.subplots()
     ax.bar(label, data, color=['purple' if jumlah <= 10000 else 'red' for jumlah in data])
@@ -43,9 +43,14 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
 
     st.write('<hr>', unsafe_allow_html=True) #hr Garis Pemisah
     
-    # Ambil 5 kota teratas berdasarkan kolom yang sesuai
-    top_cities = df_customer['customer_city'].value_counts().head(5)
+    # Ambil 10 kota teratas berdasarkan kolom yang sesuai
+    top_cities = df_customer['customer_city'].value_counts().head(10)
     top_cities.columns = ['Seller_City','Jumlah']
+
+    Kota_Teratas = top_cities.head(10)
+
+    st.header("Diagram Banyaknya Member di 10 Kota")
+    st.dataframe( Kota_Teratas)
 
     # Buat pie chart
     fig, ax = plt.subplots()
