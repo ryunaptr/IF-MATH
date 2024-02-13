@@ -11,9 +11,9 @@ def load_data(url) :
     df = pd.read_csv(url)
     return df
 
-def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
-    count_review_city = df_customer['customer_state'].value_counts().reset_index()
-    count_review_city.columns = ['Seller_City','Jumlah']
+def Analisis_Pelanggan(df_customer) :
+    count_customer_state = df_customer['customer_state'].value_counts().reset_index()
+    count_customer_state.columns = ['Negara','Jumlah']
 
     Negara_Teratas = count_review_city.head(10)
     
@@ -21,12 +21,12 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
     st.dataframe(Negara_Teratas)
 
     # Buat bar chart
-    label = Negara_Teratas['Seller_City']
+    label = Negara_Teratas['Negara']
     data = Negara_Teratas['Jumlah']
 
     fig, ax = plt.subplots()
     ax.bar(label, data, color=['purple' if jumlah <= 10000 else 'red' for jumlah in data])
-    ax.set_xlabel('Seller_City')
+    ax.set_xlabel('Negara')
     ax.set_ylabel('Jumlah')
 
     #Menambahkan Label Pada Setiap Bar
@@ -38,19 +38,19 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
     st.pyplot(fig)
 
     #Expander Grafik
-    with st.expander("Penjelasan Cabang Terendah") :
+    with st.expander("Penjelasan Negara dengan Member Terbanyak") :
         st.write('Analisis selanjutnya untuk menambah wawasan pengguna, terlihat terdapat 2 cabang yang memiliki penilaian 1 terbanyak, diantaranya Sao Paulo sebanyak 3.571 dan ibitinga sebangayk 1.241. dari sini perusahaan dapat mengambil keputusan apakah barang dari cabang tersebut perlu di cek kembali kualitasnya atau menutup pengiriman dari cabang tersebut')
 
     st.write('<hr>', unsafe_allow_html=True) #hr Garis Pemisah
     
     # Ambil 10 kota teratas berdasarkan kolom yang sesuai
-    top_cities = df_customer['customer_city'].value_counts().head(5)
-    top_cities.columns = ['Seller_City','Jumlah']
+    bottom_cities = df_customer['customer_city'].value_counts().tail(5)
+    bottom_cities.columns = ['Seller_City','Jumlah']
 
-    Kota_Teratas = top_cities.head(5)
+    Kota_Terbawah = bottom_cities.tail(5)
 
     st.header("Diagram Banyaknya Member di 10 Kota")
-    st.dataframe( Kota_Teratas)
+    st.dataframe(Kota_Terbawah)
 
     # Buat pie chart
     fig, ax = plt.subplots()
@@ -62,7 +62,7 @@ def Analisis_Pelanggan_Unik_Per_Kota(df_customer) :
 
     
     #Expander Grafik
-    with st.expander("Penjelasan Cabang Terendah") :
+    with st.expander("Penjelasan Kota dengan Member paling sedikit") :
         st.write('Analisis selanjutnya untuk menambah wawasan pengguna')
 
 
@@ -76,10 +76,10 @@ with st.sidebar :
     
 if (selected == 'Dashboard') :
     st.header(f"Dashboard Analisis E-Commerce")
-    tab1,tab2 = st.tabs(["Analisis Pengiriman", "Analisis Review"])
+    tab1,tab2 = st.tabs(["Analisis Pelanggan", "Analisis Review"])
     
     with tab1 :
-        Analisis_Pelanggan_Unik_Per_Kota(df_customer)
+        Analisis_Pelanggan(df_customer)
     
 
 
