@@ -63,7 +63,7 @@ def Analisis_Pelanggan(df_customer) :
     
     #Expander Grafik
     with st.expander("Penjelasan Kota dengan Member paling sedikit") :
-        st.write('Analisis selanjutnya untuk menambah wawasan pengguna')
+        st.write('Kota-kota dengan pembelian sangat sedikit cenderung memiliki kondisi ekonomi yang lemah, tingkat pengangguran tinggi, ketidakpastian politik, kurangnya akses ke sumber daya, atau masalah kemiskinan dan kesenjangan ekonomi. Faktor-faktor ini dapat bersama-sama menyebabkan rendahnya daya beli masyarakat dan aktivitas ekonomi di kota tersebut.')
 
 
 df_customer = load_data("https://raw.githubusercontent.com/nianaa24/IF-MATH/main/customers_dataset.csv")
