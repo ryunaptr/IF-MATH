@@ -54,7 +54,7 @@ def Analisis_Pelanggan(df_customer) :
 
     # Buat pie chart
     fig, ax = plt.subplots()
-    ax.pie(top_cities, labels=top_cities.index, autopct='%1.1f%%', startangle=90)
+    ax.pie(bottom_cities, labels=bottom_cities.index, autopct='%1.1f%%', startangle=90)
     ax.axis('equal')  # Pastikan pie chart terlihat seperti lingkaran
     
     # Tampilkan pie chart di Streamlit
