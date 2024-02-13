@@ -16,7 +16,8 @@ def Analisis_Pelanggan(df_customer) :
     count_customer_state.columns = ['Negara','Jumlah']
 
     Negara_Teratas = count_customer_state.head(10)
-    
+
+    st.header("10122247 - Rania Shahinaz")
     st.header("Grafik 10 Negara dengan Customer Terbanyak")
     st.dataframe(Negara_Teratas)
 
