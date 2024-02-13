@@ -70,6 +70,7 @@ def Analisis_Pembayaran(df_payment):
     # Mengelompokkan data pembayaran berdasarkan urutan pembayaran dan menghitung jumlah pembayaran untuk setiap urutan
     payment_by_sequence = df_payment.groupby('payment_sequential')['payment_value'].sum().reset_index()
 
+    st.header("10122481 - Ariska Diyangku Suwandi Hilala")
     st.header("Grafik Urutan Pembayaran")
     st.dataframe(payment_by_sequence)
 
@@ -109,14 +110,21 @@ def Analisis_Pembayaran(df_payment):
     with st.expander("Penjelasan Tentang Urutan Pembayaran") :
         st.write('Grafik garis menunjukkan tren jumlah pembayaran berdasarkan urutan pembayaran. Dari grafik tersebut, kita dapat melihat apakah jumlah pembayaran cenderung meningkat, menurun, atau tetap stabil seiring dengan urutan pembayaran. Ini membantu kita dalam memahami perilaku pembayaran pelanggan dan pola yang mungkin ada dalam proses pembayaran.')
 
-
+def Analisis_Barang(df_item) :
+    st.header("10122253 - Hana Mar'atul Afifah Rambe")
+    
+def Analisis_Review(df_review) :
+    st.header("10122235 - Ryuna Aurelia Putri")
+    
+def Analisis_Penjual(df_seller) :
+    st.header("10122258 - Indri Tri Puspita")
     
 
 df_customer = load_data("https://raw.githubusercontent.com/nianaa24/IF-MATH/main/customers_dataset.csv")
 df_payment = load_data("https://raw.githubusercontent.com/nianaa24/IF-MATH/main/order_payments_dataset.csv")
 df_item = load_data("https://raw.githubusercontent.com/nianaa24/IF-MATH/main/order_items_dataset.csv")
 df_review = load_data("https://raw.githubusercontent.com/nianaa24/IF-MATH/main/order_reviews_dataset.csv")
-df_seller = load_data("")
+df_seller = load_data("https://raw.githubusercontent.com/nianaa24/IF-MATH/main/sellers_dataset.csv")
 
 
 with st.sidebar :
@@ -127,12 +135,18 @@ with st.sidebar :
     
 if (selected == 'Dashboard') :
     st.header(f"Dashboard Analisis E-Commerce")
-    tab1,tab2 = st.tabs(["Analisis Pelanggan", "Analisis Review"])
+    tab1,tab2,tab3,tab4,tab5 = st.tabs(["Analisis Pelanggan", "Analisis Pembayaran", "Analisis Barang", "Analisis Review", "Analisis Penjual"])
     
     with tab1 :
         Analisis_Pelanggan(df_customer)
     with tab2 :
         Analisis_Pembayaran(df_payment)
+    with tab3 :
+        Analisis_Barang(df_item)
+    with tab4 :
+        Analisis_Review(df_review)
+    with tab5 :
+        Analisis_Penjual(df_seller)
     
 
 
