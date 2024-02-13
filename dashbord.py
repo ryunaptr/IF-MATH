@@ -65,8 +65,55 @@ def Analisis_Pelanggan(df_customer) :
     with st.expander("Penjelasan Kota dengan Member paling sedikit") :
         st.write('Kota-kota dengan pembelian sangat sedikit cenderung memiliki kondisi ekonomi yang lemah, tingkat pengangguran tinggi, ketidakpastian politik, kurangnya akses ke sumber daya, atau masalah kemiskinan dan kesenjangan ekonomi. Faktor-faktor ini dapat bersama-sama menyebabkan rendahnya daya beli masyarakat dan aktivitas ekonomi di kota tersebut.hal-hal tersebutlah yang membuat kota - kota tersebut kurangnya minat untuk menjadi member di suatu e-commerce.')
 
+def Analisis_Pembayaran(df_payment):
+    # Mengelompokkan data pembayaran berdasarkan urutan pembayaran dan menghitung jumlah pembayaran untuk setiap urutan
+    payment_by_sequence = df_payment.groupby('payment_sequential')['payment_value'].sum().reset_index()
+
+    st.header("Grafik Urutan Pembayaran")
+    st.dataframe(payment_by_sequence)
+
+    # Menampilkan lima baris pertama dari data pembayaran
+    print(payment_by_sequence.head())
+
+    payment_by_type = df_payment.groupby('payment_type')['payment_value'].sum().reset_index()
+    fig, ax = plt.subplots()
+    ax.bar(payment_by_type['payment_type'], payment_by_type['payment_value'], color='blue')
+    ax.set_xlabel('Metode Pembayaran')
+    ax.set_ylabel('Total Pembayaran')
+    plt.title('Analisis Pembayaran Berdasarkan Metode Pembayaran')
+
+    #Menambahkan Label Pada Setiap Bar
+    for i in range (len(payment_by_type['payment_type'])) :
+        ax.text(payment_by_type['payment_type'][i], payment_by_type['payment_value'][i], str(payment_by_type['payment_value'][i]), ha='center', va='bottom' )
+
+    # Pengelompokkan data pembayaran berdasarkan urutan pembayaran dan menghitung jumlah pembayaran untuk setiap urutan
+    payment_by_sequence = df_payment.groupby('payment_sequential')['payment_value'].sum().reset_index()
+
+    # Buat grafik garis
+    fig, ax = plt.subplots()
+    ax.plot(payment_by_sequence['payment_sequential'], payment_by_sequence['payment_value'], marker='o', linestyle='-')
+    ax.set_xlabel('Urutan Pembayaran')
+    ax.set_ylabel('Total Pembayaran')
+    plt.title('Analisis Pembayaran Berdasarkan Urutan Pembayaran')
+    plt.grid(True)
+    plt.show()
+    
+    #Rotasi Label 45 derajat
+    plt.xticks(rotation=45)
+    plt.show()
+     
+
+
+#Expander Grafik
+    with st.expander("Penjelasan Tentang Urutan Pembayaran") :
+        st.write('Grafik garis menunjukkan tren jumlah pembayaran berdasarkan urutan pembayaran. Dari grafik tersebut, kita dapat melihat apakah jumlah pembayaran cenderung meningkat, menurun, atau tetap stabil seiring dengan urutan pembayaran. Ini membantu kita dalam memahami perilaku pembayaran pelanggan dan pola yang mungkin ada dalam proses pembayaran.')
+
+
+    
 
 df_customer = load_data("https://raw.githubusercontent.com/nianaa24/IF-MATH/main/customers_dataset.csv")
+df_payment = load_data("https://raw.githubusercontent.com/nianaa24/IF-MATH/main/order_payments_dataset.csv")
+
 
 with st.sidebar :
     selected = option_menu('Menu',['Dashboard'],
@@ -80,6 +127,8 @@ if (selected == 'Dashboard') :
     
     with tab1 :
         Analisis_Pelanggan(df_customer)
+    with tab2 :
+        Analisis_Pembayaran(df_payment)
     
 
 
