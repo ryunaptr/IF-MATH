@@ -15,7 +15,7 @@ def Analisis_Pelanggan(df_customer) :
     count_customer_state = df_customer['customer_state'].value_counts().reset_index()
     count_customer_state.columns = ['Negara','Jumlah']
 
-    Negara_Teratas = count_review_city.head(10)
+    Negara_Teratas = count_customer_state.head(10)
     
     st.header("Grafik 10 Negara dengan Customer Terbanyak")
     st.dataframe(Negara_Teratas)
