@@ -115,7 +115,7 @@ def Analisis_Pembayaran(df_payment):
 df_customer = load_data("https://raw.githubusercontent.com/nianaa24/IF-MATH/main/customers_dataset.csv")
 df_payment = load_data("https://raw.githubusercontent.com/nianaa24/IF-MATH/main/order_payments_dataset.csv")
 df_item = load_data("https://raw.githubusercontent.com/nianaa24/IF-MATH/main/order_items_dataset.csv")
-df_review = load_data("")
+df_review = load_data("https://raw.githubusercontent.com/nianaa24/IF-MATH/main/order_reviews_dataset.csv")
 df_seller = load_data("")
 
 
