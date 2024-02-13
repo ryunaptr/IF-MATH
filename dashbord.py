@@ -134,7 +134,7 @@ with st.sidebar :
     default_index=0)
     
 if (selected == 'Dashboard') :
-    st.header(f"Dashboard Analisis E-Commerce")
+    st.header(f"Dashboard Analisis E-Commerce Kelompok IF7-MATH")
     tab1,tab2,tab3,tab4,tab5 = st.tabs(["Analisis Pelanggan", "Analisis Pembayaran", "Analisis Barang", "Analisis Review", "Analisis Penjual"])
     
     with tab1 :
