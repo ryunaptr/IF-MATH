@@ -39,7 +39,7 @@ def Analisis_Pelanggan(df_customer) :
 
     #Expander Grafik
     with st.expander("Penjelasan Negara dengan Member Terbanyak") :
-        st.write('Pembelian yang banyak di suatu negara dapat dipengaruhi oleh sejumlah faktor, termasuk stabilitas ekonomi, pertumbuhan pasar, kemudahan berbisnis, demografi yang menguntungkan, infrastruktur yang baik, ketidakstabilan di negara lain, ketersediaan sumber daya alam, dan kebijakan pemerintah yang mendukung investasi dan perdagangan. Kombinasi dari faktor-faktor ini dapat membuat suatu negara menjadi destinasi yang menarik bagi perusahaan untuk melakukan investasi dan berkontribusi pada peningkatan volume pembelian.')
+        st.write('Pembelian yang banyak di suatu negara dapat dipengaruhi oleh sejumlah faktor, termasuk stabilitas ekonomi, pertumbuhan pasar, kemudahan berbisnis, demografi yang menguntungkan, infrastruktur yang baik, ketidakstabilan di negara lain, ketersediaan sumber daya alam, dan kebijakan pemerintah yang mendukung investasi dan perdagangan. Kombinasi dari faktor-faktor ini dapat membuat suatu negara menjadi destinasi yang menarik bagi perusahaan untuk melakukan investasi dan berkontribusi pada peningkatan volume pembelian. hal-hal tersebutlah yang membuat suatu negara memiliki banyak member di suatu e-commerce.')
 
     st.write('<hr>', unsafe_allow_html=True) #hr Garis Pemisah
     
@@ -63,7 +63,7 @@ def Analisis_Pelanggan(df_customer) :
     
     #Expander Grafik
     with st.expander("Penjelasan Kota dengan Member paling sedikit") :
-        st.write('Kota-kota dengan pembelian sangat sedikit cenderung memiliki kondisi ekonomi yang lemah, tingkat pengangguran tinggi, ketidakpastian politik, kurangnya akses ke sumber daya, atau masalah kemiskinan dan kesenjangan ekonomi. Faktor-faktor ini dapat bersama-sama menyebabkan rendahnya daya beli masyarakat dan aktivitas ekonomi di kota tersebut.')
+        st.write('Kota-kota dengan pembelian sangat sedikit cenderung memiliki kondisi ekonomi yang lemah, tingkat pengangguran tinggi, ketidakpastian politik, kurangnya akses ke sumber daya, atau masalah kemiskinan dan kesenjangan ekonomi. Faktor-faktor ini dapat bersama-sama menyebabkan rendahnya daya beli masyarakat dan aktivitas ekonomi di kota tersebut.hal-hal tersebutlah yang membuat kota - kota tersebut kurangnya minat untuk menjadi member di suatu e-commerce.')
 
 
 df_customer = load_data("https://raw.githubusercontent.com/nianaa24/IF-MATH/main/customers_dataset.csv")
