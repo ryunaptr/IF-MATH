@@ -70,12 +70,12 @@ def Analisis_Pembayaran(df_payment):
     # Mengelompokkan data pembayaran berdasarkan urutan pembayaran dan menghitung jumlah pembayaran untuk setiap urutan
     payment_by_sequence = df_payment.groupby('payment_sequential')['payment_value'].sum().reset_index()
 
-    st.header("10122481 - Ariska Diyangku Suwandi Hilala")
     st.header("Grafik Urutan Pembayaran")
+    st.text("10122481-ARISKA DIYANGKU SUWANDI HILALA")
     st.dataframe(payment_by_sequence)
 
-    # Menampilkan lima baris pertama dari data pembayaran
-    print(payment_by_sequence.head())
+    # Menampilkan tabel data pembayaran
+    payment_by_sequence = df_payment.head()
 
     payment_by_type = df_payment.groupby('payment_type')['payment_value'].sum().reset_index()
     fig, ax = plt.subplots()
@@ -91,18 +91,22 @@ def Analisis_Pembayaran(df_payment):
     # Pengelompokkan data pembayaran berdasarkan urutan pembayaran dan menghitung jumlah pembayaran untuk setiap urutan
     payment_by_sequence = df_payment.groupby('payment_sequential')['payment_value'].sum().reset_index()
 
-    # Buat grafik garis
-    fig, ax = plt.subplots()
-    ax.plot(payment_by_sequence['payment_sequential'], payment_by_sequence['payment_value'], marker='o', linestyle='-')
-    ax.set_xlabel('Urutan Pembayaran')
-    ax.set_ylabel('Total Pembayaran')
-    plt.title('Analisis Pembayaran Berdasarkan Urutan Pembayaran')
-    plt.grid(True)
-    plt.show()
-    
-    #Rotasi Label 45 derajat
+    label = [1, 2, 3, 4, 5]
+    data = [4.0623, 6.467, 17.672, 24.390, 157.323]
+
+    # Buat bar chart
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.bar(label, data, color=['skyblue' if jumlah == 1000000 else 'blue' for jumlah in label])
+    ax.set_xlabel('payment_value')
+    ax.set_ylabel('payment_sequential')
+
+    # Menambahkan Label Pada Setiap Bar
+    for i in range(len(label)):
+        ax.text(label[i], data[i], str(data[i]), ha='center', va='bottom')
+
+    # Rotasi Label 45 derajat
     plt.xticks(rotation=45)
-    plt.show()
+    st.pyplot(fig)
      
 
 
