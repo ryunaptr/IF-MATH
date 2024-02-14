@@ -50,7 +50,7 @@ def Analisis_Pelanggan(df_customer) :
 
     Kota_Terbawah = bottom_cities.tail(5)
 
-    st.header("Diagram Banyaknya Member di 10 Kota")
+    st.header("Diagram Member Paling Sedikit di 5 Kota")
     st.dataframe(Kota_Terbawah)
 
     # Buat pie chart
