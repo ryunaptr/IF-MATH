@@ -119,6 +119,7 @@ def Analisis_Barang(df_item) :
     
 def Analisis_Review(df_review) :
     st.header("10122235 - Ryuna Aurelia Putri")
+    st.header("Grafik 10 Negara dengan Customer Terbanyak")
     
 def Analisis_Penjual(df_seller) :
     st.header("10122258 - Indri Tri Puspita")
